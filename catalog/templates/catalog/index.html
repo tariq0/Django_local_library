@@ -1,0 +1,32 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}
+Home Page
+{% endblock %}
+
+{% block content %}
+<h1 class="display-3">Local Library Home</h1>
+<p>
+    This is local library project to learn django
+</p>
+<br>
+<h2>Site Statistics:</h2>
+<p>Local library has the following content</p>
+<ul>
+    <li>
+        <p>Books: <span class="badge badge-primary">{{ books_count }}</span></p>
+    </li>
+    <li>
+        <p>Authors: <span class="badge badge-primary">{{ authors_count }}</span></p>
+    </li>
+    <li>
+        <p>Copies: <span class="badge badge-primary">{{ copies_count }}</span></p>
+    </li>
+    <li>
+        Visit Count Per Session : <span class="badge badge-primary">{{ visit_count }}</span>
+    </li>
+</ul>
+
+
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}
+Author Detail
+{% endblock%}
+
+{% block content %}
+<h1>{{ author.name }}</h1>
+<br>
+<hr>
+<p>
+    <strong>First name:</strong>
+    {{ author.first_name }}
+</p>
+
+<p>
+    <strong>Last name:</strong>
+    {{ author.last_name }}
+</p>
+
+<p>
+    <strong>Date of birth:</strong>
+    {{ author.date_of_birth }}
+</p>
+
+<p>
+    <strong>Date of death</strong>
+    {{ author.date_of_deth }}
+</p>
+
+<br>
+<hr>
+<h3>His work:</h3>
+<ul>
+
+</ul>
+{% endblock%}

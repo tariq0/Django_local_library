@@ -1,0 +1,66 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}
+Book Detail
+{% endblock %}
+
+{% block content %}
+    <h1>{{ book.title }}</h1>
+
+    <br>
+    <hr>
+
+    <p>
+        {{ book.summary }}
+    </p>
+
+    
+    <p>
+       <strong>Author: </strong> 
+        <a href="{% url 'catalog:author-detail' book.author.id %}">{{ book.author.name }}</a>
+        
+    </p>
+    <p>
+        <strong>Language: </strong> 
+        {{ book.language.name }}
+    </p>
+
+    <p>
+        <strong>ISBN: </strong> 
+        {{ book.isbn }}
+    </p>
+    <p>
+        <strong>Genre:</strong>
+        {% for genre in book.genre.all %}
+        {{genre.name}}{% if not forloop.last %},  
+        {% endif %}
+        {% endfor %}
+    </p>
+    <br>
+    <hr>
+    <h3>Copies</h3>
+    <br>
+    <ul>
+        {% for copy in book.book_instance_set.all %}
+        <li>
+            <p>
+                <strong>GUID: </strong> {{ copy.guid }}
+            </p>
+            <p>
+                <strong>Status:</strong>
+                <span class="{% if copy.status == 'a' %}text-success {% elif copy.status == 'o' %} text-warning {% else %} text-danger {% endif %}">
+                    {{ copy.get_status_display }}
+                </span>
+            </p>
+            <p>
+                <strong>Due back:</strong>
+                {% if copy.due_back %}{{ copy.due_back }}
+                {% else %} -- --
+                {% endif %}
+            </p>
+        </li>
+        <br>
+        {% endfor %}
+    </ul>
+    
+{% endblock %}

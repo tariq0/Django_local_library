@@ -1,0 +1,19 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}
+Borrowed Books
+{% endblock %}
+
+{% block content %}
+<h1>Borrowed Books</h1>
+<br>
+<hr>
+<div class="container-fluid">
+    <br>
+        {% for book in borrowed_books %}
+            <p>
+                <a href="{% url 'catalog:book-detail' book.book.isbn %}">{{     book.book.title }}</a> ({{ book.book.author.name }})
+            </p>
+        {% endfor %}
+</div>
+{% endblock %}

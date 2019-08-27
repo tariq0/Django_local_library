@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+
+{% block title %}
+All Borrowed Books
+{% endblock %}
+
+{% block content %}
+<h1>All Borrowed Books </h1>
+<br>
+    <ul class="list-group list-group-flush">
+        {% for book in borrowed_books %}
+        <li class="list-group-item">
+            <strong>Title: </strong>{{ book.book.title }}<br><br>
+            <strong>GUID: </strong>{{ book.guid }}<br><br>
+            <strong>Due Date: </strong>{{ book.due_back }}<br><br>
+            <strong>Borrower: </strong>{{ book.borrower }}<br><br>
+            <a class="btn btn-primary" role="button" href="{% url 'catalog:due-back-renew' book.guid %}">Renew</a>
+
+        </li>
+        {% endfor %}
+    </ul>
+    
+{% endblock%}
